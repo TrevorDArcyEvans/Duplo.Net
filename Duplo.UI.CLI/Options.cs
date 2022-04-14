@@ -20,12 +20,12 @@ internal sealed class Options
   [Option('c', "mc", Required = false, Default = 3, HelpText = "minimal characters in line\nLines with less characters are ignored\n(default is 3)")]
   public int MinimalCharsInLine { get; set; }
 
-  [Option('p', longName: "ip", Required = false, Default = true, HelpText = "ignore preprocessor directives\n(default is true)")]
+  [Option('p', longName: "ip", Required = false, Default = false, HelpText = "ignore preprocessor directives\n(default is false)")]
   public bool? IgnorePreProcessor { get; set; }
 
-  [Option('s', "is", Required = false, Default = true, HelpText = "ignore file pairs with same name\n(default is true)")]
+  [Option('s', "is", Required = false, Default = false, HelpText = "ignore file pairs with same name\n(default is false)")]
   public bool? IgnoreFilesSameName { get; set; }
 
-  [Option('x', longName: "xml", Required = false, Default = true, HelpText = "output file in XML\n(default is true)")]
+  [Option('x', longName: "xml", Required = false, Default = false, HelpText = "output file in XML\n(default is false)")]
   public bool? OutputXml { get; set; }
 }
