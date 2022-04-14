@@ -1,11 +1,14 @@
-# duplo
+# Duplo.Net
 C/C++/Java Duplicate Source Code Block Finder
 
 (http://duplo.sourceforge.net/)
 
 A more up to date version is at:
 
-https://github.com/dlidstrom/Duplo
+https://github.com/TrevorDArcyEvans/duplo.git
+
+This project is a line by line port of the above project to .NET Core 6
+
 ________________________________________________________________________________
 
 Duplo (C/C++/Java Duplicate Source Code Block Finder)
@@ -85,7 +88,7 @@ Please send Feedback and Bug Reports to:
 
 cammann@giants.ch
 
-duplo@bjss.com
+tdarcyevans@hotmail.com
 
 #### 1.4 Source files text file generation
 
@@ -114,7 +117,7 @@ ________________________________________________________________________________
 
 ### 3 Download
 
-Download Duplo [here.](https://github.com/TrevorDArcyEvans/duplo/releases)
+Download Duplo [here.](https://github.com/TrevorDArcyEvans/Duplo.Net/releases)
 
 ________________________________________________________________________________
 
@@ -137,7 +140,22 @@ from Stéphane Ducasse, Matthias Rieger and Serge Demeyer to detect duplicated c
 
 ________________________________________________________________________________
 
-### 6 LICENSE
+### 6 Prerequisites
+* .NET Core 6
+
+________________________________________________________________________________
+
+### 7 Getting started
+
+```bash
+$ git clone https://github.com/TrevorDArcyEvans/Duplo.Net.git
+$ cd Duplo.Net
+$ dotnet restore
+$ dotnet build
+```
+________________________________________________________________________________
+
+### 8 LICENSE
 
 Duplo is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
