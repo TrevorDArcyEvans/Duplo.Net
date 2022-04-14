@@ -43,7 +43,7 @@ public sealed class Duplo
 
   public void Run(string outputFilePath)
   {
-    var outFile = new StreamWriter(outputFilePath);
+    using var outFile = new StreamWriter(outputFilePath);
 
     if (_xml)
     {
