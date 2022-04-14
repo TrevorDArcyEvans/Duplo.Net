@@ -1,4 +1,4 @@
-﻿namespace Similitude.Core;
+﻿namespace Duplo.Core;
 
 public sealed class SourceLine
 {

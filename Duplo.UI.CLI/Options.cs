@@ -1,4 +1,4 @@
-﻿namespace Similitude.UI.CLI;
+﻿namespace Duplo.UI.CLI;
 
 using CommandLine;
 using Core;

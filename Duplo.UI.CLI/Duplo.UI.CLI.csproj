@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Similitude.Core\Similitude.Core.csproj" />
+    <ProjectReference Include="..\Duplo.Core\Duplo.Core.csproj" />
   </ItemGroup>
 
 </Project>

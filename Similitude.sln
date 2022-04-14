@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Similitude.UI.CLI", "Similitude.UI.CLI\Similitude.UI.CLI.csproj", "{6490AC52-D944-4D5C-9EDC-53FEDC9E246A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duplo.UI.CLI", "Duplo.UI.CLI\Duplo.UI.CLI.csproj", "{6490AC52-D944-4D5C-9EDC-53FEDC9E246A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Similitude.Core", "Similitude.Core\Similitude.Core.csproj", "{1B31DDFA-D11D-4839-8000-7BF5FFA79557}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duplo.Core", "Duplo.Core\Duplo.Core.csproj", "{1B31DDFA-D11D-4839-8000-7BF5FFA79557}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-﻿namespace Similitude.Core;
+﻿namespace Duplo.Core;
 
 using System.Diagnostics;
 
