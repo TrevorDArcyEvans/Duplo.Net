@@ -11,21 +11,21 @@ internal sealed class Options
   [Value(index: 1, Required = true, HelpText = "Path to output file")]
   public string OutputFile { get; set; }
 
-  [Option(longName: "ml", Required = false, HelpText = "minimal block size in lines\n(default is 4)")]
-  public int MinimalBlockSize { get; set; } = Duplo.MIN_BLOCK_SIZE;
+  [Option('l', longName: "ml", Required = false, Default = 4, HelpText = "minimal block size in lines\n(default is 4)")]
+  public int MinimalBlockSize { get; set; }
 
-  [Option(longName: "pt", Required = false, HelpText = "percentage of lines of duplication threshold to override -ml\nUseful for identifying whole file class duplication\n(default is 100%)")]
-  public int DuplicateLinesThresholdPercent { get; set; } = 100;
+  [Option('p', "pt", Required = false, Default = 100, HelpText = "percentage of lines of duplication threshold to override -ml\nUseful for identifying whole file class duplication\n(default is 100%)")]
+  public int DuplicateLinesThresholdPercent { get; set; }
 
-  [Option(longName: "mc", Required = false, HelpText = "minimal characters in line\nLines with less characters are ignored\n(default is 3)")]
-  public int MinimalCharsInLine { get; set; } = Duplo.MIN_CHARS;
+  [Option('c', "mc", Required = false, Default = 3, HelpText = "minimal characters in line\nLines with less characters are ignored\n(default is 3)")]
+  public int MinimalCharsInLine { get; set; }
 
-  [Option(longName: "ip", Required = false, HelpText = "ignore preprocessor directives\n(default is true)")]
-  public bool IgnorePreProcessor { get; set; } = true;
+  [Option('p', longName: "ip", Required = false, Default = true, HelpText = "ignore preprocessor directives\n(default is true)")]
+  public bool? IgnorePreProcessor { get; set; }
 
-  [Option("is", Required = false, HelpText = "ignore file pairs with same name\n(default is true)")]
-  public bool IgnoreFilesSameName { get; set; } = true;
+  [Option('s', "is", Required = false, Default = true, HelpText = "ignore file pairs with same name\n(default is true)")]
+  public bool? IgnoreFilesSameName { get; set; }
 
-  [Option(longName: "xml", Required = false, HelpText = "output file in XML\n(default is true)")]
-  public bool OutputXml { get; set; } = true;
+  [Option('x', longName: "xml", Required = false, Default = true, HelpText = "output file in XML\n(default is true)")]
+  public bool? OutputXml { get; set; }
 }

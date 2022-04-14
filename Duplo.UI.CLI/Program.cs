@@ -19,9 +19,9 @@ internal static class Program
       opt.MinimalBlockSize,
       Clamp(100, 0, opt.DuplicateLinesThresholdPercent),
       opt.MinimalCharsInLine,
-      opt.IgnorePreProcessor,
-      opt.IgnoreFilesSameName,
-      opt.OutputXml);
+      opt.IgnorePreProcessor.Value,
+      opt.IgnoreFilesSameName.Value,
+      opt.OutputXml.Value);
     duplo.Run(opt.OutputFile);
   }
 
