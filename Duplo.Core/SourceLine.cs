@@ -5,7 +5,7 @@ public sealed class SourceLine
   public string Line { get; }
   public int LineNumber { get; }
 
-  private readonly string _hash;
+  public string Hash { get; }
 
   public SourceLine(string line, int lineNumber)
   {
@@ -15,7 +15,7 @@ public sealed class SourceLine
     var cleanLine = Line
       .Replace(" ", string.Empty)
       .Replace("\t", string.Empty);
-    _hash = CreateMD5(cleanLine);
+    Hash = CreateMD5(cleanLine);
   }
 
   private static string CreateMD5(string input)
@@ -32,7 +32,7 @@ public sealed class SourceLine
 
   private bool Equals(SourceLine other)
   {
-    return _hash == other._hash;
+    return Hash == other.Hash;
   }
 
   public override bool Equals(object? obj)
@@ -42,7 +42,7 @@ public sealed class SourceLine
 
   public override int GetHashCode()
   {
-    return _hash.GetHashCode();
+    return Hash.GetHashCode();
   }
 
   public static bool operator ==(SourceLine? left, SourceLine? right)

@@ -204,7 +204,7 @@ public sealed class Duplo
       var pSLine = pSource1.Line(y);
       for (var x = 0; x < n; x++)
       {
-        if (pSLine == pSource2.Line(x))
+        if (pSLine.Hash == pSource2.Line(x).Hash)
         {
           matrix[x + n * y] = true;
         }
