@@ -17,7 +17,7 @@ public sealed class Duplo
   private readonly bool _xml;
   private int _maxLinesPerFile = 0;
   private int _duplicateLines = 0;
-  private int[] _matrix;
+  //private int[] _matrix;
 
   public Duplo(
     string listFileName,
@@ -87,10 +87,6 @@ public sealed class Duplo
     }
 
     Console.WriteLine("done.");
-
-    // Generate matrix large enough for all files
-    _matrix = new int[_maxLinesPerFile * _maxLinesPerFile];
-
 
     var blocksTotal = 0;
 
@@ -196,17 +192,14 @@ public sealed class Duplo
 
   private int Process(SourceFile pSource1, SourceFile pSource2, TextWriter outFile)
   {
+    // Generate matrix large enough for all files
+    var matrix = new int[_maxLinesPerFile * _maxLinesPerFile];
+
     var m = pSource1.NumberLines;
     var n = pSource2.NumberLines;
 
     const int NONE = 0;
     const int MATCH = 1;
-
-    // Reset matrix data
-    for (var i = 0; i < _matrix.Length; i++)
-    {
-      _matrix[i] = NONE;
-    }
 
     // Compute matrix
     for (var y = 0; y < m; y++)
@@ -216,7 +209,7 @@ public sealed class Duplo
       {
         if (pSLine == pSource2.Line(x))
         {
-          _matrix[x + n * y] = MATCH;
+          matrix[x + n * y] = MATCH;
         }
       }
     }
@@ -238,7 +231,7 @@ public sealed class Duplo
       var maxX = Math.Min(n, m - y);
       for (var x = 0; x < maxX; x++)
       {
-        if (_matrix[x + n * (y + x)] == MATCH)
+        if (matrix[x + n * (y + x)] == MATCH)
         {
           seqLen++;
         }
@@ -280,7 +273,7 @@ public sealed class Duplo
         var maxY = Math.Min(m, n - x);
         for (var y = 0; y < maxY; y++)
         {
-          if (_matrix[x + y + n * y] == MATCH)
+          if (matrix[x + y + n * y] == MATCH)
           {
             seqLen++;
           }
