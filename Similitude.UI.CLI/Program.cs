@@ -17,12 +17,17 @@ internal static class Program
     var duplo = new Duplo(
       opt.InputFileList,
       opt.MinimalBlockSize,
-      opt.DuplicateLinesThresholdPercent,
+      Clamp(100, 0, opt.DuplicateLinesThresholdPercent),
       opt.MinimalCharsInLine,
       opt.IgnorePreProcessor,
       opt.IgnoreFilesSameName,
       opt.OutputXml);
     duplo.Run(opt.OutputFile);
+  }
+
+  private static int Clamp(int upper, int lower, int value)
+  {
+    return Math.Max(lower, Math.Min(upper, value));
   }
 
   private static void HandleParseError(IEnumerable<Error> errs)

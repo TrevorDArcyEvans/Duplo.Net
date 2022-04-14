@@ -13,10 +13,10 @@ public sealed class SourceFile
   private readonly bool _ignorePrepStuff;
   private readonly List<SourceLine> _sourceLines = new();
 
-  public SourceFile(string filePath, FileType fileType, int minChars, bool ignorePrepStuff)
+  public SourceFile(string filePath, int minChars, bool ignorePrepStuff)
   {
     FilePath = filePath;
-    _fileType = fileType;
+    _fileType = FileTypeUtils.GetFileType(filePath);
     _minChars = minChars;
     _ignorePrepStuff = ignorePrepStuff;
 
