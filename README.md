@@ -22,16 +22,20 @@ ________________________________________________________________________________
 3. Download
 4. Performance Measurements
 5. Background
-6. License
+6. Prerequisites
+7. Getting started
+8. Porting to .NET Core 6
+9. License
+
 ________________________________________________________________________________
 
-### 1 General Information
+## 1 General Information
 
 Duplicated source code blocks can harm maintainability of software systems.
 Duplo is a tool to find duplicated code blocks within multiple C/C++/Java 
 source files.
 
-#### 1.1 Sample Output
+### 1.1 Sample Output
 
 ----------------------------------------------------------------
 
@@ -51,7 +55,7 @@ src\engine\geometry\SkinnedMeshGeometry.cpp(45)
 ```
 --------------------------------------------------------------------------------
 
-#### 1.2 Usage
+### 1.2 Usage
 
 ```
 NAME
@@ -82,7 +86,7 @@ AUTHORS
        Trevor D'Arcy-Evans (tdarcyevans@hotmail.com)
 ```
 
-#### 1.3 Feedback and Bug Reporting
+### 1.3 Feedback and Bug Reporting
 
 Please send Feedback and Bug Reports to:
 
@@ -90,7 +94,7 @@ cammann@giants.ch
 
 tdarcyevans@hotmail.com
 
-#### 1.4 Source files text file generation
+### 1.4 Source files text file generation
 
 Generate a list of all files of a directory with:
 
@@ -108,20 +112,20 @@ UNIX
 ```
 ________________________________________________________________________________
 
-### 2 System Requirements
+## 2 System Requirements
 
 Duplo needs about two times the memory of the total source code size. So if
 your Source code is about 120MB it requires 240MB.
 
 ________________________________________________________________________________
 
-### 3 Download
+## 3 Download
 
 Download Duplo [here.](https://github.com/TrevorDArcyEvans/Duplo.Net/releases)
 
 ________________________________________________________________________________
 
-### 4 Performance Measurements
+## 4 Performance Measurements
 
 |System                   |Files  |Locs     |Time   |Hardware   |
 |-------------------------|------:|--------:|------:|-----------|
@@ -132,20 +136,20 @@ ________________________________________________________________________________
 
 ________________________________________________________________________________
 
-### 5 Background
+## 5 Background
 
 Duplo uses the techniques described in the paper 
-[A Language Independent Approach for Detecting Duplicated Code](http://www.iam.unibe.ch/~scg/Archive/Papers/Duca99bCodeDuplication.pdf)
+[A Language Independent Approach for Detecting Duplicated Code](Duca99bCodeDuplication.pdf)
 from Stéphane Ducasse, Matthias Rieger and Serge Demeyer to detect duplicated code blocks.
 
 ________________________________________________________________________________
 
-### 6 Prerequisites
+## 6 Prerequisites
 * .NET Core 6
 
 ________________________________________________________________________________
 
-### 7 Getting started
+## 7 Getting started
 
 ```bash
 $ git clone https://github.com/TrevorDArcyEvans/Duplo.Net.git
@@ -155,7 +159,28 @@ $ dotnet build
 ```
 ________________________________________________________________________________
 
-### 8 LICENSE
+## 8 Porting to .NET Core 6
+As indicated at the start, this was a line by line conversion from C++ to C#
+In general, this was relatively straightforward due to the high degree of
+similarity between the languages.
+
+Initial runtime performance was incredibly poor and profiling quickly revealed
+some bottlenecks:
+1. _matrix_ was reset by iterating over whole array and individually resetting
+  each element
+* C++ version used `memset` which writes directly to memory
+* .NET version was changed to allocate a fresh _matrix_
+2. object comparison went through several layers of indirection
+* C++ version uses vtable directly
+* .NET version probably uses reflection or something simlarly slow
+* fix is to directly compare _Hash_ values
+
+Current runtime performance is still very slow, about 2 orders of magnitude
+slower than the C++ version.
+
+________________________________________________________________________________
+
+## 9 LICENSE
 
 Duplo is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -170,5 +195,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Foobar; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
 ________________________________________________________________________________
                                    2005, Christian M. Ammann (cammann@giants.ch)
