@@ -24,10 +24,10 @@ public sealed class SourceFile
       .ReadLines(FilePath)
       .Where(str => !string.IsNullOrEmpty(str.Trim()))
       .ToList();
-    int openBlockComments = 0;
-    for (int i = 0; i < lines.Count(); i++)
+    var openBlockComments = 0;
+    for (var i = 0; i < lines.Count(); i++)
     {
-      string line = lines[i];
+      var line = lines[i];
       var tmp = new StringBuilder();
 
       switch (_fileType)
@@ -41,8 +41,8 @@ public sealed class SourceFile
         case FileType.FILETYPE_JAVA:
         case FileType.FILETYPE_CS:
         {
-          int lineSize = line.Length;
-          for (int j = 0; j < (int)line.Length; j++)
+          var lineSize = line.Length;
+          for (var j = 0; j < (int)line.Length; j++)
           {
             if (line[j] == '/' && line[Math.Min(lineSize - 1, j + 1)] == '*')
             {
